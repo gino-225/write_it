@@ -1,0 +1,15 @@
+current directory: /home/student/write_it_project/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+/usr/local/rvm/rubies/ruby-2.4.1/bin/ruby -r ./siteconf20180313-29869-pvrclm.rb extconf.rb
+creating Makefile
+
+current directory: /home/student/write_it_project/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" clean
+
+current directory: /home/student/write_it_project/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR="
+compiling cruby.c
+linking shared-object bindex/cruby.so
+
+current directory: /home/student/write_it_project/vendor/bundle/gems/bindex-0.5.0/ext/bindex
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 cruby.so ./.gem.20180313-29869-1dfhy50/bindex
