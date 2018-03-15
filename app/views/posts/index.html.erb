@@ -2,29 +2,44 @@
 
 <h1>Posts</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
 
-  <tbody>
-    <% @posts.each do |post| %>
-      <tr>
-        <td><%= post.title %></td>
-        <td><%= post.body %></td>
-        <td><%= post.user.user_name %></td>
-        <td><%= link_to 'Show', post %></td>
-        <td><%= link_to 'Edit', edit_post_path(post) %></td>
-        <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
 
 <br>
+<% @posts.each do |post| %>
+<div class="posts">
+  <div class="viq">
+    <div class="order pcol">
+      <p>1</p>
+    </div>
+
+    <div class="votes pcol">
+      <img class ="arrow" src="img/up.png">
+      <p>4556</p>
+      <img class ="arrow" src="img/down.png">
+    </div>
+
+    <div class="post-image pcol">
+      <img class="square-img" src="<%= image_url('knife.JPG')%>">
+    </div>
+  </div>
+
+  <div class="post-content pcol">
+    <h1 class=""><%= link_to post.title, post %></h1>
+    <p class=""><%= post.body %></p>
+    <div class="post-attributes">
+      <div class="post_by">
+        <p>Posted by - <%= post.user.user_name %></p>
+      </div>
+      <div class="post-list-attributes">
+        <a href="">Comments</a>
+        <a href="">Share</a>
+        <a href="">Save</a>
+        <a href="">Hide</a>
+        <a href="">Report</a>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
 
 <%= link_to 'New Post', new_post_path %>

@@ -9,6 +9,102 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <div class="content-wrap">
+
+      <header class="main-header ">
+
+        <div class="top-nav">
+          <img src="img/logo3.png" alt="Logo" class="logo">
+          <nav class="main-nav head-col">
+            <a class="main-nav__link" href="#">Login</a>
+            <a class="main-nav__link" href="#">Sign up</a>
+          </nav>
+        </div>
+
+        <div class="secondary-nav head-col" id="myTopnav">
+          <!-- Bellow would be the active page -->
+          <a class="main-nav__link2" href="#">All</a>
+          <a class="main-nav__link2" href="#">Popular</a>
+          <a class="main-nav__link2" href="#">Random</a>
+          <a class="main-nav__link2" href="#">Popular</a>
+          <a href="javascript:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+        </div>
+
+      </header>
+
+      <script>
+      function myFunction() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "secondary-nav") {
+              x.className += " responsive";
+          } else {
+              x.className = "secondary-nav";
+          }
+      }
+      </script>
+
+      <!-- <section class="second box">
+
+      </section> -->
+
+      <section class="main-content box ">
+
+        <div class="primary-content box sec">
+
+          <h1>Selected posts</h1>
+
+          <%= yield %>
+          <p>Tables to create: </p>
+
+        </div>
+
+        <div class="side-bar box sec">
+          <div class="side-bar-inner">
+            <div class="search-bar">
+              <input type="text" placeholder="Search..">
+            </div>
+            <div>
+              <h1 class="">Sign In</h1>
+              <form action="/action_page.php">
+                First name:<br>
+                <input type="text" name="firstname" value="Mickey">
+                <br>
+                Last name:<br>
+                <input type="text" name="lastname" value="Mouse">
+                <br><br>
+                <input type="submit" value="Submit">
+              </form>
+            </div>
+            <div>
+               <hr>
+               <h3>Top Catogories</h3>
+               <ul>
+                  <li>Funny</li>
+                  <li>Top Trending</li>
+                  <li>Dirty</li>
+                </ul>
+            </div>
+          </div>
+        </div>
+
+
+      </section>
+
+
+    </div>
+
+    <footer class="main-footer">
+      <div>
+
+      </div>
+      <div class="footer-inner">
+        <span>&copy;2018 Write it</span>
+      </div>
+      <div>
+
+      </div>
+    </footer>
+
   </body>
 </html>

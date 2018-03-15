@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
-  # get 'home/index'
-    get 'posts/index'
+   get 'users/index'
+   get 'posts/index'
 
   #below is for devise added after wathcing video
   #root 'home#index'
