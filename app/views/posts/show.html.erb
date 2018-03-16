@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
+<p>POST ID = <%= @post.id %> (JUST FOR TESTING)</p>
 
-<p>
   <strong>Title:</strong>
   <%= @post.title %>
 </p>
@@ -9,11 +9,25 @@
   <strong>Body:</strong>
   <%= @post.body %>
 </p>
-
+<%= @post.comment_count %>
 <p>
-  <strong>Body:</strong>
+  <strong>Posted by:</strong>
   <%= @post.user.user_name %>
 </p>
+<%= @post.something %>
+
+
+<p>
+  <strong>Comments (<%= @post.comments.count%>)</strong>
+  <% @post.comments.each do |comment| %>
+     <p><%= comment.content %></p>
+  <%end%>
+</p>
+
+<!-- adding comment form -->
+<%= render 'comment_form', comment: @comment %>
+
+<%= link_to 'Back', posts_path %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
 <%= link_to 'Back', posts_path %>

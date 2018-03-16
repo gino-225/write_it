@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+    resources :posts
   devise_for :users
-   get 'users/index'
-   get 'posts/index'
-
+  root to: 'posts#index'
+  #get '/users', to: 'users#index'
+   #get '/users/index'
+#get '/users', to: 'users#index'
   #below is for devise added after wathcing video
   #root 'home#index'
-  resources :posts, :users
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -55,27 +55,14 @@
           <h1>Selected posts</h1>
 
           <%= yield %>
-          <p>Tables to create: </p>
+  
 
         </div>
 
         <div class="side-bar box sec">
           <div class="side-bar-inner">
-            <div class="search-bar">
-              <input type="text" placeholder="Search..">
-            </div>
-            <div>
-              <h1 class="">Sign In</h1>
-              <form action="/action_page.php">
-                First name:<br>
-                <input type="text" name="firstname" value="Mickey">
-                <br>
-                Last name:<br>
-                <input type="text" name="lastname" value="Mouse">
-                <br><br>
-                <input type="submit" value="Submit">
-              </form>
-            </div>
+
+            <%= render 'home/signin_form'%>
             <div>
                <hr>
                <h3>Top Catogories</h3>

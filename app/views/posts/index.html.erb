@@ -19,7 +19,7 @@
     </div>
 
     <div class="post-image pcol">
-      <img class="square-img" src="<%= image_url('knife.JPG')%>">
+      <img class="square-img" src="<%= image_url('user_place.jpg')%>">
     </div>
   </div>
 
@@ -31,7 +31,7 @@
         <p>Posted by - <%= post.user.user_name %></p>
       </div>
       <div class="post-list-attributes">
-        <a href="">Comments</a>
+        <a href="">Comments(<%= post.comment_count %>)</a>
         <a href="">Share</a>
         <a href="">Save</a>
         <a href="">Hide</a>

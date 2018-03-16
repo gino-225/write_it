@@ -1,6 +1,8 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
+  #@deadline = Deadline.find(params[:id])
+
   # GET /posts
   # GET /posts.json
   def index
@@ -14,6 +16,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
+    # @post = Post.new
     @post = Post.new
   end
 
@@ -25,6 +28,7 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
+    @post.user = current_user
 
     respond_to do |format|
       if @post.save
@@ -69,6 +73,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:title, :body)
+      params.require(:post).permit(:title, :body, :user_id)
     end
 end
