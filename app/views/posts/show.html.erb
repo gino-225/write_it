@@ -15,9 +15,8 @@
   <%= @post.user.user_name %>
 </p>
 <%= @post.something %>
-
-
 <p>
+  <%= link_to 'New Comment', new_comment_path %>
   <strong>Comments (<%= @post.comments.count%>)</strong>
   <% @post.comments.each do |comment| %>
      <p><%= comment.content %></p>
@@ -25,7 +24,16 @@
 </p>
 
 <!-- adding comment form -->
-<%= render 'comment_form', comment: @comment %>
+
+
+
+
+
+<%= link_to 'comments', '/comments' %>
+
+
+<%= link_to 'New Post', new_post_path %>
+
 
 <%= link_to 'Back', posts_path %>
 

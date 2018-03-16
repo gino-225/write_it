@@ -12,6 +12,11 @@ class PostsController < ApplicationController
   # GET /posts/1
   # GET /posts/1.json
   def show
+
+   @comments = @post.comments.all # => Will give you all comments for this post
+
+   @comment = Comment.new # => Will give you a new comment for the form
+
   end
 
   # GET /posts/new
