@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
+<h1>hello</h1>
 
-<h1>Posts</h1>
-
-
+<p> Post Id =  <%= params[:post_id]%> </p>
 
 <br>
 <% @comments.each do |comment| %>
@@ -11,17 +9,27 @@
     <div class="order pcol">
       <p>1</p>
     </div>
+
+    <div class="votes pcol">
+      <img class ="arrow" src="img/up.png">
+      <p>4556</p>
+      <img class ="arrow" src="img/down.png">
+    </div>
+
+    <div class="post-image pcol">
+      <img class="square-img" src="<%= image_url('user_place.jpg')%>">
+    </div>
   </div>
 
   <div class="post-content pcol">
 
     <p class=""><%= comment.content %></p>
-    <p>POST TITLE = <%= comment.post.title %></p>
-    <p>POST ID = <%= comment.post.id %></p>
-    <p>USER ID = <%= comment.post.user.id %></p>
-    <p>Comment by: <%= comment.post.user.user_name %></p>
-<p> This is the param post_id: <%= params[:post_id] %>
+    <div class="post-attributes">
+      <div class="post_by">
+        <p>comment by - <%= comment.user.user_name %></p>
+      </div>
 
+    </div>
   </div>
 </div>
 <% end %>

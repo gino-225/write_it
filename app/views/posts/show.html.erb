@@ -24,12 +24,13 @@
 </p>
 
 <!-- adding comment form -->
-
-<% @comments.each do |comment| %>
+<!-- bellow code can now access the comments variable inside the post controller -->
+<!-- <% @comments.each do |comment| %>
    <p><%= comment.content %></p>
-<%end%>
+<%end%> -->
 
-<%= link_to 'test link new', 'comments/new' %>
+<h3><%= link_to 'THIS ONE', 'comments/new' %></h3>
+
 <%= link_to 'test link index', 'comments#index' %>
 
 <%= link_to 'comments', 'comments/new' %>
