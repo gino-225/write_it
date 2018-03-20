@@ -1,3 +1,5 @@
+this is all the code that works before i started to make it look good
+
 <!-- <p id="notice"><%= notice %></p> -->
 <p>POST ID = <%= @post.id %> (JUST FOR TESTING)</p>
 
