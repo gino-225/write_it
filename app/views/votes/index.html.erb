@@ -3,7 +3,7 @@
 <p> Post Id =  <%= params[:post_id]%> </p>
 
 <br>
-<% @comments.each do |comment| %>
+<% @votes.each do |vote| %>
 <div class="posts">
   <div class="viq">
     <div class="order pcol">
@@ -23,11 +23,11 @@
 
   <div class="post-content pcol">
 
-    <p class=""><%= comment.content %></p>
+    <p class=""><%= vote.answer %></p>
     <div class="post-attributes">
       <div class="post_by">
-        <p>comment by - <%= comment.user.user_name %></p><br>
-        <p>Comment belongs to post id: <%= comment.post_id %></p><br>
+        <p>Voted by - <%= vote.user.user_name %></p><br>
+        <p>Vote belongs to post id: <%= vote.post_id %></p><br>
 
       </div>
 

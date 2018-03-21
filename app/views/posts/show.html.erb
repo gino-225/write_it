@@ -1,40 +1,69 @@
-<!-- <p id="notice"><%= notice %></p> -->
-<p>POST ID = <%= @post.id %> (JUST FOR TESTING)</p>
 
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<div class="page_post">
 
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
-<%= @post.comment_count %>
-<p>
-  <strong>Posted by:</strong>
-  <%= @post.user.user_name %>
-</p>
-<%= @post.something %>
-<p>
+  <div class="page_post_top_content pcol">
+     <div class="page_vote_title">
+        <div class="votes pcol">
+          <i class="arrow fas fa-arrow-circle-up fa-2x"></i>
+          <p><%= @post.votes.count%></p>
+          <i class="arrow fas fa-arrow-circle-down fa-2x"></i>
+        </div>
 
-  <strong>Comments (<%= @post.comments.count%>)</strong>
-  <% @post.comments.each do |comment| %>
-     <p><%= comment.content %></p>
-  <%end%>
-</p>
+        <div class="page_post_body_content pcol">
 
-<!-- adding comment form -->
-<!-- bellow code can now access the comments variable inside the post controller -->
-<!-- <% @comments.each do |comment| %>
-   <p><%= comment.content %></p>
-<%end%> -->
+            <h1 class="no_margin"> <%= @post.title %> </h1>
+            <p class="no_margin">
+            <strong>Posted by:</strong>
+            <%= @post.user.user_name %><br>
+          </p>
+        </div>
+      </div>
 
-<%= render '/comments/form', post: ([@post, @comment]) %>
+      <div class="page_post_body_text">
+        <p>
+          <strong>Body:</strong>
+          <%= @post.body %><br>
+        </p>
+      </div>
 
-<!-- <h3><%= link_to 'Create New Comment', new_post_comment_path([@post, @comment]) %></h3> -->
+   </div>
 
 
+   <p>
+     <strong><%= @post.type_count('comments')%></strong>
+   </p>
+   <br>
 
-<%= link_to 'New Post', new_post_path %>
-<%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %>
+
+
+    <%= render '/comments/form', post: ([@post, @comment]) %>
+    <!-- the post: above is a variable that holds post and comments -->
+   <div class="page_post_all_comments">
+    <p>
+
+      <% @post.comments.each do |comment| %>
+         <strong><%= comment.user.user_name %></strong>:
+         <%= comment.content %><br>
+      <%end%>
+    </p>
+  </div>
+
+  <p><strong><%= @post.type_count('votes')%></strong></p><br>
+
+  <% @post.counting_votes%>
+  <p><strong><% @post.counting_votes%></strong></p><br>
+
+
+
+
+
+  <p><strong><%= @post.display_votes_values%></strong></p><br>
+
+  <%= render '/votes/form', post: ([@post, @vote]) %>
+
+
+  <%= link_to 'New Post', new_post_path %>
+  <%= link_to 'Edit', edit_post_path(@post) %> |
+  <%= link_to 'Back', posts_path %>
+
+</div>

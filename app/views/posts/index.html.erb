@@ -13,10 +13,15 @@
     </div>
 
     <div class="votes pcol">
-      <img class ="arrow" src="img/up.png">
-      <p>4556</p>
-      <img class ="arrow" src="img/down.png">
+      <i class="arrow fas fa-arrow-circle-up fa-2x"></i>
+      <p><%= post.votes.count%></p>
+      <i class="arrow fas fa-arrow-circle-down fa-2x"></i>
     </div>
+
+
+
+<!-- form_for([post, Vote.new]) -->
+
 
     <div class="post-image pcol">
       <img class="square-img" src="<%= image_url('user_place.jpg')%>">
@@ -24,14 +29,32 @@
   </div>
 
   <div class="post-content pcol">
-    <h1 class=""><%= link_to post.title, post %></h1>
-    <p class=""><%= post.body %></p>
+
+      <h1 class=""><%= link_to post.title, post, class: "my_link_to" %></h1>
+
+
+
+    <div class="post_body_content pcol">
+      <% if post.body.length > 100 %>
+        <p><%= post.body.truncate(100) %></p>
+      <%else%>
+        <p><%= post.body %></p>
+      <%end%>
+    </div>
+
+
+
+
+  <!-- <p> ddddddddddddddd <%= post.comment_count%> </p> -->
+
+
+
     <div class="post-attributes">
       <div class="post_by">
         <p>Posted by - <%= post.user.user_name %></p>
       </div>
       <div class="post-list-attributes">
-        <a href="">Comments(<%= post.comment_count %>)</a>
+        <%= link_to post.comment_count, post, class: "my_link_to" %>
         <a href="">Share</a>
         <a href="">Save</a>
         <a href="">Hide</a>

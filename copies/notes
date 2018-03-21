@@ -1,0 +1,8 @@
+would i render 2 partials for voting?
+yes create 2 patials
+
+how could i get vote on the home page?
+
+create methods, truncate?
+
+check if logged in? if !current_user  error message

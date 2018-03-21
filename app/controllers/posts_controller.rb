@@ -14,8 +14,10 @@ class PostsController < ApplicationController
   def show
 
    @comments = @post.comments.all # => Will give you all comments for this post
-
    @comment = Comment.new # => Will give you a new comment for the form
+
+   @votes = @post.comments.all # => Will give you all comments for this post
+   @vote = Vote.new
 
   end
 

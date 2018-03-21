@@ -6,6 +6,9 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/solid.js" integrity="sha384-+Ga2s7YBbhOD6nie0DzrZpJes+b2K1xkpKxTFFcx59QmVPaSA8c7pycsNaFwUK6l" crossorigin="anonymous"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/fontawesome.js" integrity="sha384-7ox8Q2yzO/uWircfojVuCQOZl+ZZBg2D2J5nkpLqzH1HY0C1dHlTKIbpRz/LG23c" crossorigin="anonymous"></script>
   </head>
 
   <body>
@@ -15,10 +18,11 @@
       <header class="main-header ">
 
         <div class="top-nav">
-          <img src="img/logo3.png" alt="Logo" class="logo">
+          <img src="<%= image_url('logo3.png')%>" alt="Logo" class="logo">
           <nav class="main-nav head-col">
-            <a class="main-nav__link" href="#">Login</a>
-            <a class="main-nav__link" href="#">Sign up</a>
+            <!-- <a class="main-nav__link" href="#">Login</a>
+            <a class="main-nav__link" href="#">Sign up</a> -->
+            <%= render 'home/nav_signin_form'%>
           </nav>
         </div>
 
@@ -62,7 +66,7 @@
           <div class="side-bar-inner">
 
             <%= render 'home/signin_form'%>
-          
+
             <div>
                <hr>
                <h3>Top Catogories</h3>

@@ -147,6 +147,8 @@ MAIN CONTENT
   padding: 20px;
   margin-right: 10px;
   margin-left: 10px;
+  max-width: 75%;
+
 }
 
 
@@ -186,6 +188,11 @@ POST BOX
   border: 1px solid #b3bfd3;
   background-color: #CEE3F8;
   margin: 5px;
+  // max-width: 55%;
+}
+
+.my_link_to {
+  text-decoration: none;
 }
 
 .arrow {
@@ -202,6 +209,12 @@ POST BOX
 
 .post-image{
 /*padding: 5px;*/
+}
+
+.post_body_content {
+  display: flex;
+  flex-wrap: wrap;
+  //justify-content: center;
 }
 
 .post-content p, .post-content h1 {
@@ -223,7 +236,7 @@ POST BOX
 
 .viq {
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap:nowrap;
   justify-content: center;
 }
 
@@ -251,9 +264,67 @@ POST BOX
   color: #093a58;
 }
 
+// .body_text_flex{
+//   display: flex;
+//   flex-wrap: wrap;
+// }
+
 /********************
 POST BOX END
 ********************/
+
+
+
+
+
+
+
+
+/********************
+PAGE POST BOX
+********************/
+.page_post > h1 {
+  font-size: 2em;
+  // margin: 0;
+}
+
+
+.page_post_top_content{
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+
+.page_vote_title{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.page_post_body_content{
+  display: flex;
+  // flex-wrap: nowrap;
+  flex-direction: column;
+}
+
+.page_post_body_text{
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.page_post_all_comments{
+  margin-top: 10px;
+}
+
+.no_margin{
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+/********************
+POST BOX END
+********************/
+
+
+
 
 
 
@@ -286,10 +357,11 @@ POST BOX END
   display: flex;
   flex-wrap:wrap;
   flex-direction: column;
+
   }
 
   .pcol {
-    margin: auto;
+     margin: auto;
   }
 
   .side-bar-inner {
@@ -304,6 +376,7 @@ POST BOX END
   .viq {
    margin: auto;
   }
+
 
   .top-nav {
     display: flex;
@@ -320,7 +393,8 @@ POST BOX END
 
 /* Small screens */
 @media only screen and (max-width: 500px) {
- /* .side-bar {
-    order: -1;
-  }*/
+
+
+
+
 }
