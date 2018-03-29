@@ -40,20 +40,24 @@ class Post < ApplicationRecord
  def counting_votes
    up_vote = []
    down_vote = []
+   score = 0
    votes.each do |vote|
-     up_vote.push(vote.id) if vote.answer = true
-     down_vote.push(vote.id) if vote.answer = false
+    score = score + 1 if vote.selected == 1
+    score = score - 1 if vote.selected == 0
+
+
    end
   # "up vote = " + up_vote.count.to_s + "down vote = " + down_vote.count.to_s
-   vhash = {'up' => up_vote, 'down' => down_vote }
+   #vhash = {'up' => up_vote, 'down' => down_vote }
+   score
  end
 
-  def  display_votes_values
-    votes.each do |vote|
-      "#{vote.answer} + <br>"
-    end
-
-  end
+  # def  display_votes_values
+  #   votes.each do |vote|
+  #     "#{vote.selected} + <br>"
+  #   end
+  #
+  # end
 
 
 

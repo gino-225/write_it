@@ -12,6 +12,8 @@ class VotesController < ApplicationController
   end
 
   def create
+  
+
     @vote = @post.votes.new(vote_params.merge(user: current_user))
     #above is the same as bellow
     # @comment = Comment.new(comment_params)
@@ -22,7 +24,7 @@ class VotesController < ApplicationController
         format.html { redirect_to @post, notice: 'Post was successfully created.' }
         format.json { render :show, status: :created, location: @vote }
       else
-        format.html { render :new }
+        format.html {redirect_to @post, notice: 'an error occured'}#{ render :new } #here redirect to where ever
         format.json { render json: @vote.errors, status: :unprocessable_entity }
       end
     end
@@ -31,7 +33,7 @@ class VotesController < ApplicationController
   def update
     respond_to do |format|
       if @vote.update(post_params)
-        format.html { redirect_to @vote, notice: 'Post was successfully updated.' }
+        format.html { redirect_to @vote, notice: 'Thanks for the vote' }
         format.json { render :show, status: :ok, location: @vote }
       else
         format.html { render :edit }
@@ -48,7 +50,7 @@ class VotesController < ApplicationController
 
   def vote_params
     #dont need :user_id or :post_id as there not coming from the form
-    params.require(:vote).permit(:answer)
+    params.require(:vote).permit(:answer, :selected)
   end
 
 

@@ -14,6 +14,8 @@ gem 'mysql2', '>= 0.3.18', '< 0.5'
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
 
+gem 'cancancan', '~> 2.0'
+
 gem 'devise', '~> 4.4', '>= 4.4.1'
 #THIS IS FOR LOGIN
 gem 'sass-rails', '~> 5.0'

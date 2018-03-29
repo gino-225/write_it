@@ -6,3 +6,15 @@ how could i get vote on the home page?
 create methods, truncate?
 
 check if logged in? if !current_user  error message
+
+
+DEVISE.
+
+you add the gem in the gem file then run bundle install
+
+
+how can i preform a check when leaving a comment?
+
+how can i embed a a form in an image
+
+is it possible to pass a hash back to the page when calling a method? for the model

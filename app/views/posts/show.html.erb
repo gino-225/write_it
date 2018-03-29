@@ -1,3 +1,4 @@
+<p id="notice"><%= notice %></p>
 
 <div class="page_post">
 
@@ -5,7 +6,9 @@
      <div class="page_vote_title">
         <div class="votes pcol">
           <i class="arrow fas fa-arrow-circle-up fa-2x"></i>
-          <p><%= @post.votes.count%></p>
+
+          <!-- <p><%= @post.votes.count%></p> -->
+          <p><%= @post.counting_votes %></p>
           <i class="arrow fas fa-arrow-circle-down fa-2x"></i>
         </div>
 
@@ -51,15 +54,19 @@
   <p><strong><%= @post.type_count('votes')%></strong></p><br>
 
   <% @post.counting_votes%>
-  <p><strong><% @post.counting_votes%></strong></p><br>
 
 
 
 
+  <% if !user_signed_in?%>
+     <p><%= link_to "Sign In To Vote", new_user_session_path  %></p>
+  <% else %>
+  <%= render '/votes/up_vote', post: ([@post, @vote]) %>
+  <%= render '/votes/down_vote', post: ([@post, @vote]) %>
+  <% end %>
 
-  <p><strong><%= @post.display_votes_values%></strong></p><br>
-
-  <%= render '/votes/form', post: ([@post, @vote]) %>
+  <%= render '/votes/up_vote', post: ([@post, @vote]) %>
+  <%= render '/votes/down_vote', post: ([@post, @vote]) %>
 
 
   <%= link_to 'New Post', new_post_path %>

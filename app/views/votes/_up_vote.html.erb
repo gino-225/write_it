@@ -11,17 +11,13 @@
     </div>
   <% end %>
 
+  <%= f.hidden_field :selected, value: 1 %>
 
 
+  <!-- <div class="actions"> -->
+    <i class="arrow fas fa-arrow-circle-up fa-2x"></i>
 
-  <div class="field">
-    <%= f.label :answer %>
-    <%= f.check_box :answer %>
-  </div>
-
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+<%= f.submit %>
+  <!-- </div> -->
 
 <% end %>
