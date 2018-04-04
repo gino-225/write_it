@@ -2,6 +2,37 @@
   box-sizing: border-box;
 }
 
+.up_vote:before {
+  content: "\f000";
+    font-family: FontAwesome;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: inherit;
+/*--adjust as necessary--*/
+    color: #000;
+    font-size: 18px;
+    padding-right: 0.5em;
+    top: 10px;
+    left: 0;
+  }
+  button.vote_button {
+    border: none;
+    background: none;
+  }
+
+  .cant_vote_up {
+    background-color: green;
+    // padding: 5px;
+    border-radius: 20px;
+  }
+  .cant_vote_down {
+    background-color: red;
+    // padding: 5px;
+    border-radius: 20px;
+  }
+
+
+
 /*body {
   display: flex;
   flex-direction: column;

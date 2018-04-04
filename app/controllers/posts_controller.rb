@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
-  #before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:edit]
   before_action :set_post, only: [:show, :edit, :update, :destroy]
+  load_and_authorize_resource
 
   #@deadline = Deadline.find(params[:id])
 
@@ -8,6 +9,10 @@ class PostsController < ApplicationController
   # GET /posts.json
   def index
     @posts = Post.all
+    @post = @posts
+    # @votes = @post.votes.all
+    # @vote = Vote.new
+    #@vote = @post.find(params[:id])
   end
 
   # GET /posts/1
@@ -17,15 +22,19 @@ class PostsController < ApplicationController
    @comments = @post.comments.all # => Will give you all comments for this post
    @comment = Comment.new # => Will give you a new comment for the form
 
-   @votes = @post.comments.all # => Will give you all comments for this post
+   #@votes = @post.comments.all # => Will give you all comments for this post
+   @votes = @post.votes.all
    @vote = Vote.new
 
   end
 
   # GET /posts/new
   def new
+
+      @post = Post.new
+
     # @post = Post.new
-    @post = Post.new
+
   end
 
   # GET /posts/1/edit

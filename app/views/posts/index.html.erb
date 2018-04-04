@@ -13,14 +13,44 @@
     </div>
 
     <div class="votes pcol">
-      <i class="arrow fas fa-arrow-circle-up fa-2x"></i>
-      <p><%= post.votes.count%></p>
-      <i class="arrow fas fa-arrow-circle-down fa-2x"></i>
+
+        <% if !user_signed_in? %>
+
+            <%= link_to new_user_session_path do %>
+              <%= content_tag :i, "", :class => "arrow fas fa-arrow-circle-up fa-2x" %>
+            <% end %>
+
+            <p><%= post.votes.count%></p>
+
+            <%= link_to new_user_session_path do %>
+              <%= content_tag :i, "", :class => "arrow fas fa-arrow-circle-down fa-2x" %>
+            <% end %>
+
+        <% else %>
+
+            <% if post.votes.where(user_id: current_user.id, selected: 1).any? %>
+              <i class="arrow fas fa-arrow-circle-up fa-2x cant_vote_up"></i>
+            <% else %>
+              <%= render '/votes/up_vote', post: post, vote: Vote.new %>
+            <% end %>
+
+            <p><%= post.votes.count%></p>
+
+            <% if post.votes.where(user_id: current_user.id, selected: 0).any? %>
+              <i class="arrow fas fa-arrow-circle-down fa-2x cant_vote_down"></i>
+            <% else %>
+              <%= render '/votes/down_vote', post: post, vote: Vote.new %>
+            <% end %>
+
+        <% end %>
+
     </div>
 
 
 
-<!-- form_for([post, Vote.new]) -->
+
+
+
 
 
     <div class="post-image pcol">
@@ -65,4 +95,8 @@
 </div>
 <% end %>
 
-<%= link_to 'New Post', new_post_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Post', new_post_path %>
+<%else%>
+  <%= link_to "Sign In", new_user_session_path  %>
+<% end %>

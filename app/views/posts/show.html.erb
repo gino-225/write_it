@@ -5,11 +5,44 @@
   <div class="page_post_top_content pcol">
      <div class="page_vote_title">
         <div class="votes pcol">
-          <i class="arrow fas fa-arrow-circle-up fa-2x"></i>
 
-          <!-- <p><%= @post.votes.count%></p> -->
-          <p><%= @post.counting_votes %></p>
-          <i class="arrow fas fa-arrow-circle-down fa-2x"></i>
+
+
+
+
+          <% if !user_signed_in? %>
+
+              <%= link_to new_user_session_path do %>
+                <%= content_tag :i, "", :class => "arrow fas fa-arrow-circle-up fa-2x" %>
+              <% end %>
+
+              <p><%= @post.votes.count%></p>
+
+              <%= link_to new_user_session_path do %>
+                <%= content_tag :i, "", :class => "arrow fas fa-arrow-circle-down fa-2x" %>
+              <% end %>
+              
+
+          <% else %>
+
+              <% if @post.votes.where(user_id: current_user.id, selected: 1).any? %>
+                <i class="arrow fas fa-arrow-circle-up fa-2x cant_vote_up"></i>
+              <% else %>
+                <%= render '/votes/up_vote', post: @post, vote: @vote %>
+              <% end %>
+
+              <p><%= @post.votes.count%></p>
+
+              <% if @post.votes.where(user_id: current_user.id, selected: 0).any? %>
+                <i class="arrow fas fa-arrow-circle-down fa-2x cant_vote_down"></i>
+              <% else %>
+                <%= render '/votes/down_vote', post: @post, vote: @vote %>
+              <% end %>
+
+          <% end %>
+
+
+
         </div>
 
         <div class="page_post_body_content pcol">
@@ -56,21 +89,28 @@
   <% @post.counting_votes%>
 
 
-
-
-  <% if !user_signed_in?%>
+  <% if !user_signed_in? %>
      <p><%= link_to "Sign In To Vote", new_user_session_path  %></p>
   <% else %>
-  <%= render '/votes/up_vote', post: ([@post, @vote]) %>
-  <%= render '/votes/down_vote', post: ([@post, @vote]) %>
+    <% if current_user.id == @post.votes.where(user_id: current_user.id) %>
+
+    <%end%>
   <% end %>
 
-  <%= render '/votes/up_vote', post: ([@post, @vote]) %>
-  <%= render '/votes/down_vote', post: ([@post, @vote]) %>
+
+  <br>
+
+  <h2>current post = <%= @post.id%></h2>
 
 
-  <%= link_to 'New Post', new_post_path %>
-  <%= link_to 'Edit', edit_post_path(@post) %> |
   <%= link_to 'Back', posts_path %>
+  <%if user_signed_in? && @post.user.id == current_user.id %>
+    <%= link_to 'Edit', edit_post_path(@post) %>
+  <%end%>
+  <% if user_signed_in? %>
+    <%= link_to 'New Post', new_post_path %>
+  <%end%>
+
+
 
 </div>

@@ -1,7 +1,7 @@
 
 
 <% if user_signed_in? %>
-  <a class="main-nav__link"><%= current_user.user_name %></a>
+  <a class="main-nav__link">Hi <%= current_user.user_name %></a>
   <a class="main-nav__link"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></a>
 <% else %>
   <a class="main-nav__link"><%= link_to "Sign In", new_user_session_path  %></a>

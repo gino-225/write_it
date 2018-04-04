@@ -12,14 +12,22 @@ class Vote < ApplicationRecord
 # so when someone trys to create a comment etc they first get asked to sighn in
 #or create an accout and when they do they get taken bak to where they were before.
 
-def user_check
-  #check if sighned in?
-  if user_signed_in?
-  #format.html { redirect_to @post, notice: 'Every Vote Counts.' }
+  def user_check
+    #check if sighned in?
+    if user_signed_in?
+    #format.html { redirect_to @post, notice: 'Every Vote Counts.' }
+
+    end
 
   end
 
-end
+  # def vote_check
+  #   @post.votes.where(user_id: current_user.id).each do |v|
+  #     if v.selected == 1
+  #         'you have already voted'
+  #     end
+  #   end
+  # end
 
 
 end
