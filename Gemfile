@@ -16,6 +16,9 @@ gem 'puma', '~> 3.0'
 
 gem 'cancancan', '~> 2.0'
 
+gem 'trix'
+#editor for the content.
+
 gem 'devise', '~> 4.4', '>= 4.4.1'
 #THIS IS FOR LOGIN
 gem 'sass-rails', '~> 5.0'

@@ -16,12 +16,12 @@
                 <%= content_tag :i, "", :class => "arrow fas fa-arrow-circle-up fa-2x" %>
               <% end %>
 
-              <p><%= @post.votes.count%></p>
+              <p><%= @post.counting_votes%></p>
 
               <%= link_to new_user_session_path do %>
                 <%= content_tag :i, "", :class => "arrow fas fa-arrow-circle-down fa-2x" %>
               <% end %>
-              
+
 
           <% else %>
 
@@ -31,7 +31,7 @@
                 <%= render '/votes/up_vote', post: @post, vote: @vote %>
               <% end %>
 
-              <p><%= @post.votes.count%></p>
+              <p><%= @post.counting_votes%></p>
 
               <% if @post.votes.where(user_id: current_user.id, selected: 0).any? %>
                 <i class="arrow fas fa-arrow-circle-down fa-2x cant_vote_down"></i>
@@ -55,10 +55,13 @@
         </div>
       </div>
 
-      <div class="page_post_body_text">
+      <div class="">
+        <!-- <div class="page_post_body_text"> -->
         <p>
           <strong>Body:</strong>
-          <%= @post.body %><br>
+
+            <%= @post.body.html_safe %><br>
+
         </p>
       </div>
 

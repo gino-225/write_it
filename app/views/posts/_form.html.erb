@@ -19,8 +19,11 @@
 
   <div class="field">
     <%= f.label :body %>
-    <%= f.text_area :body %>
+    <%= f.trix_editor :body %>
+    <!-- <input id="x" type="hidden" name="content"> -->
+    <!-- <trix-editor input="x"></trix-editor> -->
   </div>
+<!-- text_area -->
 
   <div class="actions">
     <%= f.submit %>

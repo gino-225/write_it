@@ -6,59 +6,57 @@ class Post < ApplicationRecord
 
 
   validates :title, :body, presence: true
-  #do uniquiness foe user and post check stackoverflow
+  #do uniquiness for user and post check stackoverflow
 
-  def body_count
-    body.length
-  end
-
-  def comment_count
-    if comments.count < 1
-      "Be the first to Comment."
-    else
-       'Comments (' + comments.count.to_s + ')'
+    def body_count
+      body.length
     end
-  end
 
-  def type_count(string)
-    case string
-    when 'comments'
+    def comment_count
       if comments.count < 1
         "Be the first to Comment."
       else
-         "Comments (" + comments.count.to_s + ")"
-      end
-    when 'votes'
-      if votes.count < 1
-        "Be the first to Vote."
-      else
-         "Votes (" + votes.count.to_s + ")"
+         'Comments (' + comments.count.to_s + ')'
       end
     end
-  end
 
- def counting_votes
-   up_vote = []
-   down_vote = []
-   score = 0
-   votes.each do |vote|
-    score = score + 1 if vote.selected == 1
-    score = score - 1 if vote.selected == 0
+    def type_count(string)
+      case string
+      when 'comments'
+        if comments.count < 1
+          "Be the first to Comment."
+        else
+           "Comments (" + comments.count.to_s + ")"
+        end
+      when 'votes'
+        if votes.count < 1
+          "Be the first to Vote."
+        else
+           "Votes (" + votes.count.to_s + ")"
+        end
+      end
+    end
 
-
+   def counting_votes
+     score = 0
+     votes.each do |vote|
+        if vote.selected == 1
+          score += 1
+        elsif vote.selected == 0
+          score -=  0
+        end
+     end
+     score
    end
-  # "up vote = " + up_vote.count.to_s + "down vote = " + down_vote.count.to_s
-   #vhash = {'up' => up_vote, 'down' => down_vote }
-   score
- end
 
-  # def  display_votes_values
-  #   votes.each do |vote|
-  #     "#{vote.selected} + <br>"
-  #   end
-  #
-  # end
+   def votes_for(user)
 
+     if votes.where(user_id: user.id).present?
+       votes.where(user_id: user.id).first
+     else
+       votes.new
+     end
+   end
 
 
 end

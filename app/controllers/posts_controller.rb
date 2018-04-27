@@ -8,7 +8,10 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.all
+
+    # @posts = Post.all.sort_by {|post| post.votes.count}.reverse
+    @posts = Post.all.sort_by {|post| post.counting_votes}.reverse
+
     @post = @posts
     # @votes = @post.votes.all
     # @vote = Vote.new
@@ -92,4 +95,8 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:title, :body, :user_id)
     end
+
+    # def coupon_params
+    #   params.require(:coupon).permit(:store, :coupon_code)
+    # end
 end

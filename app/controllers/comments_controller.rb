@@ -2,9 +2,9 @@ class CommentsController < ApplicationController
   before_action :set_post
 
   def index
-    #@comments = Comment.all
+    @comments = Comment.all
     #@posts = comment.find(params[:post_id])
-    @comments = @post.comments.all # this gets the current post then the comments for it
+    #@comments = @post.comments.all # this gets the current post then the comments for it
   end
 
   def new

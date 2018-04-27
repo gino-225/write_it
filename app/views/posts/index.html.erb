@@ -1,7 +1,10 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
-
+<%= form_tag(posts_path method: :get) do %>
+  title <%= text_field_tag :post, params[:title] %>
+  <%= submit_tag 'Search' %>
+<% end %>
 
 
 <br>
@@ -20,7 +23,7 @@
               <%= content_tag :i, "", :class => "arrow fas fa-arrow-circle-up fa-2x" %>
             <% end %>
 
-            <p><%= post.votes.count%></p>
+            <p><%= post.counting_votes%></p>
 
             <%= link_to new_user_session_path do %>
               <%= content_tag :i, "", :class => "arrow fas fa-arrow-circle-down fa-2x" %>
@@ -34,7 +37,7 @@
               <%= render '/votes/up_vote', post: post, vote: Vote.new %>
             <% end %>
 
-            <p><%= post.votes.count%></p>
+            <p><%= post.counting_votes%></p>
 
             <% if post.votes.where(user_id: current_user.id, selected: 0).any? %>
               <i class="arrow fas fa-arrow-circle-down fa-2x cant_vote_down"></i>
@@ -68,7 +71,7 @@
       <% if post.body.length > 100 %>
         <p><%= post.body.truncate(100) %></p>
       <%else%>
-        <p><%= post.body %></p>
+        <p><%= post.body.html_safe %></p>
       <%end%>
     </div>
 

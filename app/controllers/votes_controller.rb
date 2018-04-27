@@ -1,5 +1,6 @@
 class VotesController < ApplicationController
   before_action :set_post
+  before_action :set_vote, only: [:update]
 
   def index
     #@comments = Comment.all
@@ -27,19 +28,9 @@ class VotesController < ApplicationController
     respond_to do |format|
 
 
-      if @post.votes.where(user_id: current_user.id).any? # yes user has vote now check which vote they have
-          # update new query
-          vote = @post.votes.where(user_id: current_user.id)
-          var = vote[0].id.to_i
-          if Vote.update(var, :selected => vote_params[:selected].to_i)
-          format.html {redirect_back fallback_location: root_path, notice: " Your Vote Was Changed"}
-          format.json { render :show, status: :ok, location: @post }
-          else
-          format.html { render :edit }
-          format.json { render json: @vote.errors, status: :unprocessable_entity }
-          end
+      
 
-      elsif @vote.save
+      if @vote.save
         format.html { redirect_back fallback_location: root_path, notice: 'Every Votes Counts.' }
         format.json { render :show, status: :created, location: @post }
       else
@@ -53,8 +44,8 @@ class VotesController < ApplicationController
 
   def update
     respond_to do |format|
-      if @vote.update(post_params)
-        format.html { redirect_to @vote, notice: 'Thanks for the vote' }
+      if @vote.update(vote_params)
+        format.html { redirect_back fallback_location: root_path, notice: 'Thanks for the vote' }
         format.json { render :show, status: :ok, location: @vote }
       else
         format.html { render :edit }
@@ -68,6 +59,11 @@ class VotesController < ApplicationController
   def set_post
     @post = Post.find(params[:post_id]) # sets the post variable
   end
+
+  def set_vote
+    @vote = Vote.find(params[:id])
+  end
+
 
   def vote_params
     #dont need :user_id or :post_id as there not coming from the form
