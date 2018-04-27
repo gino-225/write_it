@@ -1,6 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_post
-
+#this is the latest comments
   def index
     @comments = Comment.all
     #@posts = comment.find(params[:post_id])
